@@ -4,19 +4,24 @@ const app = express();
 const bodyParser = require('body-parser');
 var morgan = require('morgan');
 
+
 require ('./_helpers/db');
 const errorHandler = require('_helpers/error-handler');
-const UserControllerUser = require('./controllers/users.controller');
+const UserController = require('./controllers/user.controller');
+const CarController = require('./controllers/car.controller');
+
 
 app.use(bodyParser.json());
 app.use(morgan('tiny')); //To get Http logs in console
 
 app.use('/hello', (req, res)=>{
-    res.json('hello gopi');
+    res.json('Hello World');
 })
 
 //Routing Controllers
-app.use('/users', UserControllerUser);
+app.use('/users', UserController);
+app.use('/cars', CarController);
+
 
 // global error handler
 app.use(errorHandler);

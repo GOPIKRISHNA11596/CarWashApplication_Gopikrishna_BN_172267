@@ -10,7 +10,7 @@ const UserController = require('./controllers/user.controller');
 const CarController = require('./controllers/car.controller');
 const BookingController = require('./controllers/booking.controller');
 const PaymentController = require('./controllers/payment.controller');
-const ServicesController = require('./controllers/carwashservices.controller');
+const ServicesController = require('./controllers/servicepackage.controller');
 
 
 app.use(bodyParser.json());

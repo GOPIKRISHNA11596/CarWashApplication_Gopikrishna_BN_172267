@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const carWahService = require('../services/carwashservices.service');
+const carWahService = require('../services/servicepackage.service');
 
 // routes
 router.post('/add', add);

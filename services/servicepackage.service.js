@@ -1,5 +1,5 @@
 const db = require('../_helpers/db');
-const CarWash = require('../models/carwashservices.model');
+const CarWash = require('../models/servicepackage.model');
 
 module.exports = {
     getAll,

@@ -20,9 +20,8 @@ module.exports = {
 async function create(carParam) {
     const car = new Car(carParam);
 
-    var randomNum = gen(); //Generating Random number
-    car.serviceID = randomNum;
-
+    var randomNumber= gen();//Generating Random number
+    car.carID = randomNumber;
     await car.save();
 }
 
@@ -33,12 +32,12 @@ async function getAll() {
 
 //Get a car by ID
 async function getById(id) {
-    return await Car.findOne({serviceID : id});
+    return await Car.findOne({carID : id});
 }
 
 //Uppdate a car by ID
 async function update(id, carParam) {
-    const car = await Car.findOne({serviceID : id});
+    const car = await Car.findOne({carID : id});
     // validate
     if (!car) throw 'Car not found';
     // copy carParam properties to user
@@ -47,5 +46,5 @@ async function update(id, carParam) {
 }
 
 async function _delete(id) {
-    await Car.deleteOne({serviceID : id});
+    await Car.deleteOne({carID : id});
 }

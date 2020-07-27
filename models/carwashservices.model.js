@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const carSchema = new mongoose.Schema({
+const carWashSchema = new mongoose.Schema({
     carID : { type: Number}, //Random Service Number
     carBrand : { type: String, required: true },
     carType : { type: String, required: true },
@@ -12,7 +12,7 @@ const carSchema = new mongoose.Schema({
         versionKey: false
     });
 
-carSchema.set('toJSON', {
+carWashSchema.set('toJSON', {
     virtuals: true,
     versionKey: false,
     transform: function (doc, ret) {
@@ -20,4 +20,4 @@ carSchema.set('toJSON', {
     }
 });
 
-const Car = module.exports = mongoose.model('Car', carSchema, 'cars');
+const CarWash = module.exports = mongoose.model('CarWash', carWashSchema, 'carwashs');

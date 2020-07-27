@@ -22,14 +22,17 @@ async function authenticate({ username, password }) {
     }
 }
 
+//To get all users
 async function getAll() {
     return await User.find();
 }
 
+//To get a user
 async function getById(id) {
     return await User.findOne({username : id});
 }
 
+//To create a user
 async function create(userParam) {
     // validate
     if (await User.findOne({ username: userParam.username })) {
@@ -42,11 +45,10 @@ async function create(userParam) {
     if (userParam.password) {
         user.hash = bcrypt.hashSync(userParam.password, 10);
     }
-
-    // save user
     await user.save();
 }
 
+//To upadte a user
 async function update(id, userParam) {
     const user = await User.findOne({username : id});
 
@@ -67,6 +69,7 @@ async function update(id, userParam) {
     await user.save();
 }
 
+//To delete a user
 async function _delete(id) {
     await User.deleteOne({username : id});
 }

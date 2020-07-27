@@ -3,15 +3,16 @@ var Schema = mongoose.Schema
 const Car = require('../models/car.model');
 
 const bookingSchema = new mongoose.Schema({
-    bookingID : {type: Number, unique : true},
+    bookingID : {type: Number, unique : true, trim: true},
     carInfo   : {
         type: Schema.Types.ObjectId,
-        ref:'Car'
+        ref:'Car',
+        trim: true
     },
 
     schedule  : {
         date :  {type: Date, default: Date.now},
-        time :  {type: String, required:true}
+        time :  {type: String, required:true, trim: true}
      },
     location  : {
         doorNumber : Number,

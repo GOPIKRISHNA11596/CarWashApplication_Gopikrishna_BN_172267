@@ -19,7 +19,10 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.25",
+    "mongoose-type-phone": "^1.0.1",
+    "mongoose-validator": "^2.1.0",
     "morgan": "^1.10.0",
+    "password-validator": "^5.0.3",
     "random-number": "0.0.9",
     "rootpath": "^0.1.2",
     "shortid": "^2.2.15"

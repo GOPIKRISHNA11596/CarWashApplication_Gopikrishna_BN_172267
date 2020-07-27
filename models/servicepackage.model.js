@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const carWashServiceSchema = new mongoose.Schema({
-    packageID : { type: Number},
-    packageName : { type: String, required: true },
-    packageDescrpion :{ type: String, required: true},
-    packageAmount : { type: String, required: true }
+    packageID : { type: Number, trim: true},
+    packageName : { type: String, required: true, trim: true },
+    packageDescrpion :{ type: String, required: true, trim: true},
+    packageAmount : { type: String, required: true, trim: true }
     },
     {
         versionKey: false

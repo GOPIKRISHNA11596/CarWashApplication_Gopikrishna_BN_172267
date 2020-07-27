@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 var morgan = require('morgan');
 
 require ('./_helpers/db');
+//const jwt = require('./_helpers/jwt');
 const errorHandler = require('./_helpers/error-handler');
 const UserController = require('./controllers/user.controller');
 const CarController = require('./controllers/car.controller');
@@ -12,6 +13,7 @@ const BookingController = require('./controllers/booking.controller');
 const PaymentController = require('./controllers/payment.controller');
 const ServicesController = require('./controllers/servicepackage.controller');
 
+//app.use(jwt());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,7 +29,6 @@ app.use('/cars', CarController);
 app.use('/booking', BookingController);
 app.use('/payment', PaymentController);
 app.use('/services', ServicesController);
-
 
 
 // global error handler

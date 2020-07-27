@@ -1,6 +1,8 @@
 ﻿const express = require('express');
 const router = express.Router();
 const userService = require('../services/user.service');
+const config = require('../config.json');
+const jwt = require('jsonwebtoken');
 
 // routes
 router.post('/authenticate', authenticate);
@@ -9,6 +11,7 @@ router.get('/', getAll);
 router.get('/:id', getById);
 router.put('/:id', update);
 router.delete('/:id', _delete);
+
 
 module.exports = router;
 

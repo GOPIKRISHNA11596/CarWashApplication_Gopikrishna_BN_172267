@@ -11,7 +11,7 @@ var validateEmail = function(email) {
 var usernameValidator = [
     validate({
         validator: 'isLength',
-        arguments: [3, 50],
+        arguments: [3, 20],
         message: 'Userame should be between {ARGS[0]} and {ARGS[1]} characters'
     }),
     validate({
@@ -25,7 +25,7 @@ var usernameValidator = [
 var contactnoValidator = [
     validate({
         validator: function(v) {
-            return /^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/.test(v);
+            return /^((\\+91-?)|0)?[0-9]{10}$/.test(v);
         },
         message: '{VALUE} is not a valid 10 digit number!'
     }),

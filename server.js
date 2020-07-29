@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 var morgan = require('morgan');
+var cors = require('cors');
 
 require ('./_helpers/db');
 //const jwt = require('./_helpers/jwt');
@@ -14,7 +15,7 @@ const PaymentController = require('./controllers/payment.controller');
 const ServicesController = require('./controllers/servicepackage.controller');
 
 //app.use(jwt());
-
+app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('tiny')); //To get Http logs in console

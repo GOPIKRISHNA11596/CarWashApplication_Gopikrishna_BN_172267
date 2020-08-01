@@ -16,7 +16,7 @@ module.exports = {
 //For login
 async function authenticate({ username, password }) {
     const user = await User.findOne({ username });
-    if(bcrypt.compareSync(password, user.hash)) {
+    if(bcrypt.compareSync(password, user.hash) ) {
         // Create a token
         const payload = { user: user.id};
         const options = { expiresIn: '2d'};

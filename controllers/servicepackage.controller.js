@@ -5,6 +5,7 @@ const carWahService = require('../services/servicepackage.service');
 // routes
 router.post('/add', add);
 router.get('/', getAll);
+router.get('/:id', getById);
 router.put('/:id', update);
 router.delete('/:id', _delete);
 
@@ -21,6 +22,11 @@ function add(req, res, next) {
 function getAll(req, res, next) {
     carWahService.getAll()
         .then(cars => res.json(cars))
+        .catch(err => next(err));
+}
+function getById(req, res, next) {
+    carWahService.getById(req.params.id)
+        .then(user => user ? res.json(user) : res.sendStatus(404))
         .catch(err => next(err));
 }
 

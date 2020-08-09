@@ -17,15 +17,9 @@ module.exports = {
 async function authenticate({ username, password }) {
     const user = await User.findOne({ username });
     if(bcrypt.compareSync(password, user.hash) ) {
-        // Create a token
-        const payload = { user: user.id};
-        const options = { expiresIn: '2d'};
-        const secret = config.secret;
-        const token = jwt.sign(payload, secret, options);
-        return {
-            ...user.toJSON(),
-            token
-        };
+        return true;
+    }else{
+        return false;
     }
 }
 
@@ -77,7 +71,7 @@ async function update(id, userParam) {
     if(userParam.password !== userParam.confirmPassword){
         throw "Password and confirm password are not matching"
     }
-    var password_pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    var password_pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$/;
     if (!password_pattern.test(userParam.password)) {
         throw "Password should between 8 to 15 characters and should contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character."
     }else{

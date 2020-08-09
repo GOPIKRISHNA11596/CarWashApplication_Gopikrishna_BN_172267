@@ -12,7 +12,9 @@ const UserController = require('./controllers/user.controller');
 const CarController = require('./controllers/car.controller');
 const BookingController = require('./controllers/booking.controller');
 const PaymentController = require('./controllers/payment.controller');
-const ServicesController = require('./controllers/servicepackage.controller');
+const CarServicesController = require('./controllers/servicepackage.controller');
+const WasherController = require('./controllers/washer.controller');
+
 
 //app.use(jwt());
 app.use(cors())
@@ -29,7 +31,9 @@ app.use('/users', UserController);
 app.use('/cars', CarController);
 app.use('/booking', BookingController);
 app.use('/payment', PaymentController);
-app.use('/services', ServicesController);
+app.use('/carservices', CarServicesController);
+app.use('/washers', WasherController);
+
 
 
 // global error handler

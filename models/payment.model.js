@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const paymentSchema = new mongoose.Schema({
-    userName : { type: String,  required: true, trim: true }, 
+    username : { type: String,  required: true, trim: true }, 
     cardHolderName : { type: String, required: true, trim: true },
     cardNumber : { type: String, required: true, trim: true },
     expmon: { type: String, required: true, trim: true },

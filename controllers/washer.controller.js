@@ -1,6 +1,6 @@
-﻿const express = require('express');
+const express = require('express');
 const router = express.Router();
-const userService = require('../services/user.service');
+const waherService = require('../services/washer.service');
 const config = require('../config.json');
 const jwt = require('jsonwebtoken');
 
@@ -16,38 +16,37 @@ router.delete('/:id', _delete);
 module.exports = router;
 
 function authenticate(req, res, next) {
-  userService.authenticate(req.body)
-//    .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
-    .then(user => user ? res.json(user) : res.json(user))
+    waherService.authenticate(req.body)
+    .then(washer => washer ? res.json(washer) : res.json(washer))
     .catch(err => next(err));
 }
 
 function register(req, res, next) {
-    userService.create(req.body)
+    waherService.create(req.body)
         .then(() => res.json('Registered Successfully'))
         .catch(err => next(err));
 }
 
 function getAll(req, res, next) {
-    userService.getAll()
-        .then(users => res.json(users))
+    waherService.getAll()
+        .then(washers => res.json(washers))
         .catch(err => next(err));
 }
 
 function getById(req, res, next) {
-    userService.getById(req.params.id)
-        .then(user => user ? res.json(user) : res.sendStatus(404))
+    waherService.getById(req.params.id)
+        .then(washer => washer ? res.json(washer) : res.sendStatus(404))
         .catch(err => next(err));
 }
 
 function update(req, res, next) {
-    userService.update(req.params.id, req.body)
+    waherService.update(req.params.id, req.body)
         .then(() => res.json('Updated Successfully'))
         .catch(err => next(err));
 }
 
 function _delete(req, res, next) {
-    userService.delete(req.params.id)
+    waherService.delete(req.params.id)
         .then(() => res.json('Deleted Successfully'))
         .catch(err => next(err));
 }

@@ -1,6 +1,7 @@
 const db = require('../_helpers/db');
 const Car = require('../models/car.model');
 var rn = require('random-number');
+var fs = require('fs');
 
 var gen = rn.generator({
     min:  1234567891,
@@ -19,7 +20,6 @@ module.exports = {
 //Add a car
 async function create(carParam) {
     const car = new Car(carParam);
-
     var randomNumber= gen();//Generating Random number
     car.carID = randomNumber;
     await car.save();

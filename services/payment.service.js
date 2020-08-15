@@ -1,5 +1,12 @@
 const db = require('../_helpers/db');
 const Payment = require('../models/payment.model');
+var rn = require('random-number');
+
+var gen = rn.generator({
+    min:  1234567891,
+    max:  9874316514,
+    integer: true
+  });
 
 
 module.exports = {
@@ -13,6 +20,10 @@ module.exports = {
 //Add a car
 async function create(paymentParam) {
     const payment = new Payment(paymentParam);
+
+    var randomNumber= gen();//Generating Random number
+    payment.tranactionID = randomNumber;
+
     await payment.save();
 }
 

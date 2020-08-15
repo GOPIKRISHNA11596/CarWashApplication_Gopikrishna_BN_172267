@@ -13,6 +13,8 @@ module.exports = router;
 
 //Adding a car
 function add(req, res, next) {
+    const file = req.file;
+    console.log(file);
     carService.create(req.body)
         .then(() => res.json('Added Car Successfully'))
         .catch(err => next(err));

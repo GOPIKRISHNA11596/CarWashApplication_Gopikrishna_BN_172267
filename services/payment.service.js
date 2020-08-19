@@ -34,12 +34,12 @@ async function getAll() {
 
 //Get a car by ID
 async function getById(id) {
-    return await Payment.findOne({carID : id});
+    return await Payment.findOne({username : id});
 }
 
 //Uppdate a car by ID
 async function update(id, paymentParam) {
-    const payment = await Payment.findOne({carID : id});
+    const payment = await Payment.findOne({username : id});
     // validate
     if (!payment) throw 'Card not found';
     // copy carParam properties to user
@@ -48,5 +48,5 @@ async function update(id, paymentParam) {
 }
 
 async function _delete(id) {
-    await Payment.deleteOne({carID : id});
+    await Payment.deleteOne({username : id});
 }

@@ -14,12 +14,15 @@ require ('./_helpers/db');
 //const jwt = require('./_helpers/jwt');
 const errorHandler = require('./_helpers/error-handler');
 const UserController = require('./controllers/user.controller');
+const AdminController = require('./controllers/admin.controller');
 const CarController = require('./controllers/car.controller');
 const BookingController = require('./controllers/booking.controller');
 const PaymentController = require('./controllers/payment.controller');
 const CarServicesController = require('./controllers/servicepackage.controller');
 const WasherController = require('./controllers/washer.controller');
 const ServiceSelectedController = require('./controllers/service-selected.controller');
+const ServiceRequestController = require('./controllers/service-request.controller');
+const ServicerRequestAcceptedController = require('./controllers/service-request-accepted.controller');
 
 //app.use(jwt());
 app.use(cors())
@@ -43,12 +46,15 @@ app.use('/hello', (req, res)=>{
 
 //Routing Controllers
 app.use('/users', UserController);
+app.use('/admins', AdminController);
 app.use('/cars', upload.single('myFile'), CarController);
 app.use('/booking', BookingController);
 app.use('/payments', PaymentController);
 app.use('/carservices', CarServicesController);
 app.use('/washers', WasherController);
 app.use('/serviceselected', ServiceSelectedController);
+app.use('/servicerequests', ServiceRequestController);
+app.use('/servicerequestacc', ServicerRequestAcceptedController);
 
 // global error handler
 app.use(errorHandler);

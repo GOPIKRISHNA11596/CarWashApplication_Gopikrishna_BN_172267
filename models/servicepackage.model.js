@@ -10,12 +10,12 @@ const carWashServiceSchema = new mongoose.Schema({
     packageID : { type: Number, trim: true},
     packageName : { type: String, required: true, trim: true },
     packageDescrpion :{ 
-        service1 : String,
-        service2 : String,
-        service3 : String,
-        service4 : String,
-        service5 : String,
-        service6 : String
+        service1 : { type: String, required: true, trim: true },
+        service2 : { type: String, required: true, trim: true },
+        service3 : { type: String, required: true, trim: true },
+        service4 : { type: String, required: true, trim: true },
+        service5 : { type: String, required: true, trim: true },
+        service6 : { type: String, required: true, trim: true },
     },
     packageAmount : { type: Number, required: true, trim: true }
     },

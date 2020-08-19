@@ -32,12 +32,12 @@ async function getAll() {
 
 //Get a booking by ID
 async function getById(id) {
-    return await Booking.findOne({bookingID : id});
+    return await Booking.findOne({username : id});
 }
 
 //Update a booking by ID
 async function update(id, bookingParam) {
-    const booking = await Booking.findOne({bookingID : id});
+    const booking = await Booking.findOne({username : id});
     // validate
     if (!booking) throw 'Car not found';
     // copy carParam properties to user
@@ -47,6 +47,6 @@ async function update(id, bookingParam) {
 
 //Delete booking by id
 async function _delete(id) {
-    await Booking.deleteOne({bookingID : id});
+    await Booking.deleteOne({username : id});
 }
 

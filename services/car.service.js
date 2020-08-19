@@ -12,6 +12,7 @@ var gen = rn.generator({
 module.exports = {
     getAll,
     getById,
+    getById1,
     create,
     update,
     delete: _delete
@@ -30,14 +31,19 @@ async function getAll() {
     return await Car.find();
 }
 
-//Get a car by ID
+//Get a car by username
 async function getById(id) {
+    return await Car.findOne({username : id});
+}
+
+//Get a car by ID
+async function getById1(id) {
     return await Car.findOne({carID : id});
 }
 
 //Uppdate a car by ID
 async function update(id, carParam) {
-    const car = await Car.findOne({carID : id});
+    const car = await Car.findOne({username : id});
     // validate
     if (!car) throw 'Car not found';
     // copy carParam properties to user
@@ -46,5 +52,5 @@ async function update(id, carParam) {
 }
 
 async function _delete(id) {
-    await Car.deleteOne({carID : id});
+    await Car.deleteOne({username : id});
 }

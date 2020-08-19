@@ -30,12 +30,12 @@ async function getAll() {
 }
 
 async function getById(id) {
-    return await User.findOne({packageID : id});
+    return await User.findOne({username : id});
 }
 
 //Uppdate a car by ID
 async function update(id, carWashServiceParam) {
-    const carWashService = await CarWashService.findOne({packageID : id});
+    const carWashService = await CarWashService.findOne({username : id});
     // validate
     if (!car) throw 'Car Service not found';
     // copy carParam properties to user
@@ -44,5 +44,5 @@ async function update(id, carWashServiceParam) {
 }
 
 async function _delete(id) {
-    await CarWashService.deleteOne({packageID : id});
+    await CarWashService.deleteOne({username : id});
 }

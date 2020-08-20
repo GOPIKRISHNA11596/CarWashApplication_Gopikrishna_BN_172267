@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const carSchema = new mongoose.Schema({
-    username :{ type:String, required: true},
+    username :{ type:String},
     carID : { type: Number}, //Random Car ID
     carBrand : { type: String, required: true, trim: true },
     carType : { type: String, required: true, trim: true },

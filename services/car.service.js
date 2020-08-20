@@ -43,7 +43,7 @@ async function getById1(id) {
 
 //Uppdate a car by ID
 async function update(id, carParam) {
-    const car = await Car.findOne({username : id});
+    const car = await Car.findOne({carID : id});
     // validate
     if (!car) throw 'Car not found';
     // copy carParam properties to user

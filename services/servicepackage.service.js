@@ -35,14 +35,15 @@ async function getById(id) {
 
 //Uppdate a car by ID
 async function update(id, carWashServiceParam) {
-    const carWashService = await CarWashService.findOne({username : id});
+    const carWashService = await CarWashService.findOne({packageID : id});
+    console.log(carWashService);
     // validate
-    if (!car) throw 'Car Service not found';
+    if (!carWashService) throw 'Car Service not found';
     // copy carParam properties to user
-    Object.assign(carWash, carWashServiceParam);
+    Object.assign(carWashService, carWashServiceParam);
     await carWashService.save();
 }
 
 async function _delete(id) {
-    await CarWashService.deleteOne({username : id});
+    await CarWashService.deleteOne({packageID : id});
 }

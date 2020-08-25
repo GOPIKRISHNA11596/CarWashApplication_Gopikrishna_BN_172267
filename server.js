@@ -23,6 +23,8 @@ const WasherController = require('./controllers/washer.controller');
 const ServiceSelectedController = require('./controllers/service-selected.controller');
 const ServiceRequestController = require('./controllers/service-request.controller');
 const ServiceRequestAcceptedController = require('./controllers/service-request-accepted.controller');
+// const ImageController = require('./controllers/image.controller');
+
 
 //app.use(jwt());
 app.use(cors())
@@ -55,6 +57,8 @@ app.use('/washers', WasherController);
 app.use('/serviceselected', ServiceSelectedController);
 app.use('/servicerequests', ServiceRequestController);
 app.use('/servicerequestacc', ServiceRequestAcceptedController);
+// app.use('/img', ImageController);
+
 
 // global error handler
 app.use(errorHandler);

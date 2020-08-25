@@ -6,6 +6,7 @@ module.exports = {
     create,
     getAll,
     getById,
+    getServiceByCarId,
     update,
     delete: _delete
 };
@@ -26,12 +27,16 @@ async function getById(id) {
     return await ServiceSelected.findOne({username : id});
 }
 
+async function getServiceByCarId(id) {
+    return await ServiceSelected.findOne({carID : id});
+}
+
 //Update a booking by ID
 async function update(id, serviceSelectedParam) {
-    const serviceSelected = await ServiceSelected.findOne({username : id});
+    const serviceSelected = await ServiceSelected.findOne({carID : id});
     // validate
-    if (!serviceSelected) throw 'Not found';
     // copy carParam properties to user
+    console.log(serviceSelectedParam);
     Object.assign(serviceSelected, serviceSelectedParam);
     await serviceSelected.save();
 }

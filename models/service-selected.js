@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const serviceSelected = new mongoose.Schema({
-    username :{ type:String, required: true},
-    packageID : { type: Number, trim: true}
+    username :{ type:String, trim: true},
+    packageID : { type: Number, trim: true},
+    carID : { type: Number, trim: true}
     },
     {
         versionKey: false

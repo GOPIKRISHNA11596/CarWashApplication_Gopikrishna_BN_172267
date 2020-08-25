@@ -7,6 +7,7 @@ router.post('/add', add);
 router.get('/', getAll);
 router.get('/:id', getById); //username
 router.get('/:id', getById1); //carID
+router.get('/:id', getByIdCarBrand); //CarBrand
 router.put('/:id', update);
 router.delete('/:id', _delete);
 
@@ -38,6 +39,13 @@ function getById(req, res, next) {
 //Get car by ID
 function getById1(req, res, next) {
     carService.getById1(req.params.id)
+        .then(car => car ? res.json(car) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
+//Get car by ID
+function getByIdCarBrand(req, res, next) {
+    carService.getByIdCarBrand(req.params.id)
         .then(car => car ? res.json(car) : res.sendStatus(404))
         .catch(err => next(err));
 }

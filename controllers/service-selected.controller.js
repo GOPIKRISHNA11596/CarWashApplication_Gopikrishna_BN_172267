@@ -6,6 +6,7 @@ const ServiceSelectedService = require('../services/service-selected.service');
 router.post('/add', Create);
 router.get('/', getAll);
 router.get('/:id', getById);
+router.get('/:id', getServiceByCarId);
 router.put('/:id', update);
 router.delete('/:id', _delete);
 
@@ -29,11 +30,18 @@ function getAll(req, res, next) {
 //Get car by ID
 function getById(req, res, next) {
     ServiceSelectedService.getById(req.params.id)
-        .then(bookings => bookings ? res.json(bookings) : res.sendStatus(404))
+        .then(service => service ? res.json(service) : res.sendStatus(404))
         .catch(err => next(err));
 }
 
-//Update a car by ID
+//Get car by ID
+function getServiceByCarId(req, res, next) {
+    ServiceSelectedService.getServiceByCarId(req.params.id)
+        .then(service => service ? res.json(service) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
+
 function update(req, res, next) {
     ServiceSelectedService.update(req.params.id, req.body)
         .then(() => res.json('Service Updated successfully'))

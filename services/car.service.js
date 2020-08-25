@@ -12,6 +12,7 @@ var gen = rn.generator({
 module.exports = {
     getAll,
     getById,
+    getByIdCarBrand,
     getById1,
     create,
     update,
@@ -34,6 +35,10 @@ async function getAll() {
 //Get a car by username
 async function getById(id) {
     return await Car.findOne({username : id});
+}
+
+async function getByIdCarBrand(carBrand) {
+    return await Car.findOne({carBrand : carBrand});
 }
 
 //Get a car by ID

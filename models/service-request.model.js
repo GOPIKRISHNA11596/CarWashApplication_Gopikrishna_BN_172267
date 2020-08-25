@@ -1,27 +1,26 @@
 const mongoose = require('mongoose');
-const Booking = require('../models/booking.model');
 
 const serviceRequestSchema = new mongoose.Schema({
  
-    username :{ type:String, required: true},
+    username :{ type:String},
     bookingID : { type: Number, required: true},
-    amount : { type: Number, required: true, trim: true },
-    car : { type: String, required: true, trim: true },
-    carID : { type: Number, required: true, trim: true },
-    packageID : { type: Number, required: true, trim: true },
-    packageName: { type: String, required: true, trim: true },
+    amount : { type: Number, trim: true },
+    carBrand : { type: String,trim: true },
+    carID : { type: Number, trim: true },
+    packageID : { type: Number, trim: true },
+    packageName: { type: String, trim: true },
     date :  {type: Date},
-    time :  {type: String, required:true, trim: true},
+    time :  {type: String, trim: true},
 
     // location: { type: String, required: true, trim: true }
     // location: { 
-        doorNumber: { type: Number, required: true,trim: true},
-        street: { type: String, required: true, trim: true },
-        landmark: { type: String, required: true, trim: true },
-        city: { type: String, required: true, trim: true },
-        district: { type: String, required: true, trim: true },
-        state: { type: String, required: true, trim: true },
-        pincode: { type: Number, required: true, trim: true},
+        doorNumber: { type: Number, trim: true},
+        street: { type: String,  trim: true },
+        landmark: { type: String,  trim: true },
+        city: { type: String,  trim: true },
+        district: { type: String, trim: true },
+        state: { type: String, trim: true },
+        pincode: { type: Number, trim: true},
     //  }
 
     },

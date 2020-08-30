@@ -12,6 +12,7 @@ module.exports = {
     create,
     getAll,
     getById,
+    getAllScheduleByUsername,
     update,
     delete: _delete
 };
@@ -33,6 +34,10 @@ async function getAll() {
 //Get a booking by ID
 async function getById(id) {
     return await Booking.findOne({username : id});
+}
+
+async function getAllScheduleByUsername(username) {
+    return await Booking.find({username  : username});
 }
 
 //Update a booking by ID

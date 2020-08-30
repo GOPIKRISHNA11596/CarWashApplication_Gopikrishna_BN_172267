@@ -6,6 +6,7 @@ const bookingService = require('../services/booking.service');
 router.post('/add', Create);
 router.get('/', getAll);
 router.get('/:id', getById);
+router.get('/username/:id', getAllScheduleByUsername);
 router.put('/:id', update);
 router.delete('/:id', _delete);
 
@@ -30,6 +31,12 @@ function getAll(req, res, next) {
 function getById(req, res, next) {
     bookingService.getById(req.params.id)
         .then(bookings => bookings ? res.json(bookings) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
+function getAllScheduleByUsername(req, res, next) {
+    bookingService.getAllScheduleByUsername(req.params.id)
+        .then(data => res.json(data))
         .catch(err => next(err));
 }
 

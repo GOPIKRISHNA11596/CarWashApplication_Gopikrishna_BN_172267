@@ -52,7 +52,7 @@ app.use('/hello', (req, res)=>{
 //Routing Controllers
 app.use('/users', UserController);
 app.use('/admins', AdminController);
-app.use('/cars', upload.single('myFile'), CarController);
+app.use('/cars', CarController);
 app.use('/booking', BookingController);
 app.use('/payments', PaymentController);
 app.use('/carservices', CarServicesController);
@@ -71,4 +71,5 @@ app.use('/orderaccepted', OderAcceptedController);
 app.use(errorHandler);
 
 const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 3000; //Ternary operator
-app.listen(3000, () => console.log(`Express server running on port 3000`));
+const server = app.listen(3000, () => console.log(`Express server running on port 3000`));
+module.exports = server;

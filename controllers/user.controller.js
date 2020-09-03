@@ -24,7 +24,8 @@ function authenticate(req, res, next) {
 
 function register(req, res, next) {
     userService.create(req.body)
-        .then(() => res.json('Registered Successfully'))
+        // .then(() => res.json('Registered Successfully'))
+        .then(user => res.json(user))
         .catch(err => next(err));
 }
 
@@ -36,18 +37,20 @@ function getAll(req, res, next) {
 
 function getById(req, res, next) {
     userService.getById(req.params.id)
-        .then(user => user ? res.json(user) : res.sendStatus(404))
+        // .then(user => user ? res.json(user) : res.sendStatus(404))
+        .then(user => user ? res.json(user) : res.status(404).send("User not found with provided username"))
         .catch(err => next(err));
 }
 
 function update(req, res, next) {
     userService.update(req.params.id, req.body)
-        .then(() => res.json('Updated Successfully'))
+        // .then(() => res.json('Updated Successfully'))
+        .then(user => res.json(user))
         .catch(err => next(err));
 }
 
 function _delete(req, res, next) {
     userService.delete(req.params.id)
-        .then(() => res.json('Deleted Successfully'))
+        .then(() => res.json({message : 'Deleted Successfully'}))
         .catch(err => next(err));
 }

@@ -18,7 +18,8 @@ function add(req, res, next) {
     const file = req.file;
     console.log(file);
     carService.create(req.body)
-        .then(() => res.json('Added Car Successfully'))
+        // .then(() => res.json('Added Car Successfully'))
+        .then(car => res.json(car))
         .catch(err => next(err));
 }
 
@@ -53,13 +54,14 @@ function getByIdCarBrand(req, res, next) {
 //Update a car by ID
 function update(req, res, next) {
     carService.update(req.params.id, req.body)
-        .then(() => res.json('Updated car details Successfully'))
+        // .then(() => res.json('Updated car details Successfully'))
+        .then(car => res.json(car))
         .catch(err => next(err));
 }
 
 //Delete a car by ID
 function _delete(req, res, next) {
     carService.delete(req.params.id)
-        .then(() => res.json('Removed car Successfully'))
+        .then(() => res.json({message : 'Removed car Successfully'}))
         .catch(err => next(err));
 }

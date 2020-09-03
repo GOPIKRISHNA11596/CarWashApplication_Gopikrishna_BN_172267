@@ -55,7 +55,7 @@ async function create(userParam) {
         //Hash password
         user.hash = bcrypt.hashSync(userParam.password, 10);
     }
-    await user.save();
+    return await user.save();
 }
 
 //To upadte a user
@@ -82,7 +82,7 @@ async function update(id, userParam) {
     // copy userParam properties to user
     Object.assign(user, userParam);
 
-    await user.save();
+    return await user.save();
 }
 
 //To delete a user

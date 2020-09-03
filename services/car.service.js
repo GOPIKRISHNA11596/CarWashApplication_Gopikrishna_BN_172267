@@ -24,7 +24,7 @@ async function create(carParam) {
     const car = new Car(carParam);
     var randomNumber= gen();//Generating Random number
     car.carID = randomNumber;
-    await car.save();
+    return await car.save();
 }
 
 //Get all cars
@@ -53,7 +53,7 @@ async function update(id, carParam) {
     if (!car) throw 'Car not found';
     // copy carParam properties to user
     Object.assign(car, carParam);
-    await car.save();
+    return await car.save();
 }
 
 async function _delete(id) {

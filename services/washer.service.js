@@ -16,7 +16,7 @@ module.exports = {
 //For login
 async function authenticate({ username, password }) {
     const washer = await Washer.findOne({ username });
-    console.log(washer);
+    //console.log(washer);
     if(bcrypt.compareSync(password, washer.hash) ) {
         return true;
     }else{
@@ -56,7 +56,7 @@ async function create(washerParam) {
         //Hash password
         washer.hash = bcrypt.hashSync(washerParam.password, 10);
     }
-    await washer.save();
+    return await washer.save();
 }
 
 //To upadte a user
@@ -83,7 +83,7 @@ async function update(id, washerParam) {
     // copy userParam properties to user
     Object.assign(washer, washerParam);
 
-    await washer.save();
+    return await washer.save();
 }
 
 //To delete a user

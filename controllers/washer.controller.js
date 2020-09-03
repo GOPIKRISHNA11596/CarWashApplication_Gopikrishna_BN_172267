@@ -23,7 +23,8 @@ function authenticate(req, res, next) {
 
 function register(req, res, next) {
     waherService.create(req.body)
-        .then(() => res.json('Registered Successfully'))
+        // .then(() => res.json('Registered Successfully'))
+        .then(washer => res.json(washer))
         .catch(err => next(err));
 }
 
@@ -35,18 +36,20 @@ function getAll(req, res, next) {
 
 function getById(req, res, next) {
     waherService.getById(req.params.id)
-        .then(washer => washer ? res.json(washer) : res.sendStatus(404))
+        // .then(washer => washer ? res.json(washer) : res.sendStatus(404))
+        .then(washer => washer ? res.json(washer) : res.status(404).send("Washer not found with provided username"))
         .catch(err => next(err));
 }
 
 function update(req, res, next) {
     waherService.update(req.params.id, req.body)
-        .then(() => res.json('Updated Successfully'))
+        // .then(() => res.json('Updated Successfully'))
+        .then(washer => res.json(washer))
         .catch(err => next(err));
 }
 
 function _delete(req, res, next) {
     waherService.delete(req.params.id)
-        .then(() => res.json('Deleted Successfully'))
+        .then(() => res.json({message : 'Deleted Successfully'}))
         .catch(err => next(err));
 }

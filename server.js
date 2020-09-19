@@ -1,17 +1,15 @@
 require('rootpath')();
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 var morgan = require('morgan');
 var cors = require('cors');
-var fs = require('fs');
-const util = require('util');
-const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
-const path = require('path');
+var helmet = require('helmet');
+require('./ecosystem.config');
+
 
 require ('./_helpers/db');
-//const jwt = require('./_helpers/jwt');
 const errorHandler = require('./_helpers/error-handler');
 const UserController = require('./controllers/user.controller');
 const AdminController = require('./controllers/admin.controller');
@@ -25,25 +23,13 @@ const ServiceRequestController = require('./controllers/service-request.controll
 const ServiceRequestAcceptedController = require('./controllers/service-request-accepted.controller');
 const RatingController = require('./controllers/rating.controller');
 const OderAcceptedController = require('./controllers/order-accepted.controller');
+const { create } = require('./services/user.service');
 
-// const ImageController = require('./controllers/image.controller');
-
-
-//app.use(jwt());
-app.use(cors())
+app.use(cors());
+app.use(helmet()); //Content Security
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('tiny')); //To get Http logs in console
-
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, 'uploads');
-    },
-    filename: (req, file, cb) => {
-      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
-});
-var upload = multer({storage: storage});
 
 app.use('/hello', (req, res)=>{
     res.json('Hello World');
@@ -63,13 +49,24 @@ app.use('/servicerequestacc', ServiceRequestAcceptedController);
 app.use('/ratings', RatingController);
 app.use('/orderaccepted', OderAcceptedController);
 
-
-// app.use('/img', ImageController);
-
-
 // global error handler
 app.use(errorHandler);
 
-const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 3000; //Ternary operator
-const server = app.listen(3000, () => console.log(`Express server running on port 3000`));
+//Space is important at 'production '
+// const port = process.env.NODE_ENV === 'production '? process.env.PORT_PROD : process.env.PORT_DEV; //Ternary operator
+// const server = app.listen(port, () => console.log(`Express server running in ${process.env.NODE_ENV}environment with port ${port}`));
+
+// if(process.env.NODE_ENV === 'development '){
+//     port = process.env.PORT_DEV;
+//     // port = PORT;
+//     console.log('Development Environment port : ' + port);
+// }else if(process.env.NODE_ENV === 'production '){
+//     port = process.env.PORT_PROD;
+//     // port = PORT;
+//     console.log('Production Environment port : ' + port);
+// }
+port = process.env.PORT;
+
+const server = app.listen(port, () => console.log(`Express server running in ${process.env.NODE_ENV}environment with port ${port}`));
+
 module.exports = server;

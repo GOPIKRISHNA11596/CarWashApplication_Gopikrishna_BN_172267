@@ -1,8 +1,6 @@
 ﻿const express = require('express');
 const router = express.Router();
 const userService = require('../services/user.service');
-const config = require('../config.json');
-const jwt = require('jsonwebtoken');
 
 // routes
 router.post('/authenticate', authenticate);

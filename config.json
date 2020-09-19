@@ -1,4 +1,6 @@
 {
-    "connectionString": "mongodb://localhost:27017/CarWashApplication",
+    "connectionStringDev": "mongodb://localhost:27017/CarWashApplication",
+    "connectionStringProd": "mongodb://localhost:27017/CarWashApplicationProd",
+    "connectionStringStage": "mongodb://localhost:27017/CarWashApplicationStage",
     "secret" : "CarWashApplication"
 }

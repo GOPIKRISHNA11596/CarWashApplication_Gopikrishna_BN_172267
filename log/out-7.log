@@ -1,0 +1,37 @@
+Express server running in productionenvironment with port 80
+Express server running in productionenvironment with port 80
+Express server running in developmentenvironment with port 3000
+Express server running in developmentenvironment with port 3000
+GET /users 304 - - 76.084 ms
+GET /admins 304 - - 59.506 ms
+Express server running in developmentenvironment with port 3000
+GET /carservices 304 - - 58.578 ms
+GET /carservices 304 - - 36.258 ms
+Express server running in developmentenvironment with port 3000
+Express server running in developmentenvironment with port 3000
+Express server running in developmentenvironment with port 3000
+POST /users/authenticate 200 4 - 258.232 ms
+GET /carservices 304 - - 19.037 ms
+Express server running in developmentenvironment with port 3000
+Express server running in developmentenvironment with port 3000
+Express server running in developmentenvironment with port 3000
+Express server running in developmentenvironment with port 3000
+GET /users 200 934 - 16.271 ms
+GET /users 200 934 - 3.662 ms
+Express server running in developmentenvironment with port 3000
+Express server running in developmentenvironment with port 3000
+Express server running in developmentenvironment with port 3000
+Express server running in developmentenvironment with port 3000
+Express server running in developmentenvironment with port 3000
+Express server running in developmentenvironment with port 3000
+Express server running in developmentenvironment with port 3000
+Express server running in developmentenvironment with port 3000
+GET /users 200 934 - 51.808 ms
+GET /users 200 934 - 3.809 ms
+GET /users 200 934 - 3.237 ms
+Express server running in developmentenvironment with port 3000
+GET /users 200 934 - 19.608 ms
+Express server running in productionenvironment with port 80
+Express server running in productionenvironment with port 80
+Express server running in productionenvironment with port 80
+Express server running in productionenvironment with port 80
